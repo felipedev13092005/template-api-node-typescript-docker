@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: api-node-template
+    build: .
+    ports:
+      - "3000:3000"
+    env_file: .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - /app/node_modules # Evita conflictos de node_modules locales
+    command: pnpm dev
+
+  db:
+    container_name: db-mysql-template-node
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_api_node_data:/var/lib/mysql
+
+volumes:
+  mysql_api_node_data:
