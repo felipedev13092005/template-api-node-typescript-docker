@@ -7,4 +7,8 @@ RUN npm install -g pnpm && pnpm install
 
 COPY . .
 
-CMD ["pnpm", "dev"]
+# Compila el código TypeScript a JavaScript
+RUN pnpm build
+
+# Ejecuta el archivo compilado
+CMD ["pnpm", "start"]
