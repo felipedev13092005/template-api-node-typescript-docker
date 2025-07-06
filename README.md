@@ -27,10 +27,10 @@ Antes de comenzar, asegúrate de tener instalado:
 
 1. **Clona el repositorio:**
 
-   ```bash
-   git clone git@github.com:felipedev13092005/template-api-node-typescript-docker.git
-   docker compose up --buildcd template-api-node-typescript-docker
-   ```
+```bash
+git clone git@github.com:felipedev13092005/template-api-node-typescript-docker.git
+docker compose up --buildcd template-api-node-typescript-docker
+```
 
 2. **Crea el archivo .env:**
 
@@ -79,8 +79,7 @@ Si prefieres ejecutar tu código localmente (usando pnpm dev) y usar Docker solo
 1. **Levanta solo MySQL con Docker**
 
 ```bash
-   docker compose -f docker-compose-dev.yml up -d
-
+docker compose -f docker-compose-dev.yml up -d
 ```
 
 Esto iniciará solo el contenedor de MySQL en segundo plano.
