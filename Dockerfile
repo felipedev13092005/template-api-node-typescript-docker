@@ -10,5 +10,8 @@ COPY . .
 # Compila el código TypeScript a JavaScript
 RUN pnpm build
 
-# Ejecuta el archivo compilado
-CMD ["pnpm", "start"]
+# Arranque condicional según NODE_ENV
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"development\" ]; then pnpm dev; else pnpm start; fi"]

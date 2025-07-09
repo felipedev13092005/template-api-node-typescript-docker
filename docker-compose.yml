@@ -3,16 +3,20 @@ version: "3.8"
 services:
   api:
     container_name: api-node-template
-    build: .
+    build:
+      context: .
+      args:
+        NODE_ENV: development
     ports:
       - "3000:3000"
     env_file: .env
     depends_on:
       - db
+    environment:
+      NODE_ENV: development
     volumes:
-      - .:/app
-      - /app/node_modules # Evita conflictos de node_modules locales
-    command: pnpm dev
+      - .:/app:cached
+      - node_modules:/app/node_modules
 
   db:
     container_name: db-mysql-template-node
@@ -28,3 +32,4 @@ services:
 
 volumes:
   mysql_api_node_data:
+  node_modules:
